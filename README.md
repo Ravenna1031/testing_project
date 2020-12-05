@@ -6,6 +6,6 @@
 
 问题：
 
-![image-20201205235715148](C:\Users\raven\AppData\Roaming\Typora\typora-user-images\image-20201205235715148.png)
+![Alt text](https://github.com/Ravenna1031/testing_project/blob/main/pics/pytest12_5.png)
 
 执行测试用例后结果仅显示yield之前的“开始计算”，没有显示yield之后的“结束计算”。
