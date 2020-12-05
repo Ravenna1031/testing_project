@@ -6,6 +6,7 @@ web,app,接口以pytest为基础
 python界比较主流的单元测试框架，unittest，pytest,nose……
 入门难度低，第三方库丰富，通用性，与allure生成的报告非常的美观
 """
+import allure
 
 """
 pytest规则
@@ -78,13 +79,7 @@ ids参数
 -从yaml中读取参数：数据读取成为参数化中需要的参数格式
 """
 
-
 import pytest
-import yaml
-
-from python_code.calc import Calculator
-
-
 
 
 # @pytest.fixture(scope="class")
@@ -93,11 +88,7 @@ from python_code.calc import Calculator
 #     calc = Calculator()
 #     return calc
 
-
-def test_a():
-    print("测试用例a")
-
-
+@allure.feature("测试计算器")
 class TestCalc:
 
     # def setup_class(self):
@@ -113,47 +104,69 @@ class TestCalc:
     #     add_datas, ids=add_id
     # )
 
-
-    def test_add(self, get_calc, get_add_datas):
+    @pytest.mark.run(order=1)
+    @allure.story("测试加法")
+    def test_add(self, get_calc, get_add_data):
         result = None
         try:
             # 实例化计算器类
             # calc = Calculator()
             # 调用 add 方法
             # result = self.calc.add(a, b)
-            result = get_calc.add(get_add_datas[0], get_add_datas[1])
+            with allure.step("计算两数相加结果"):
+                result = get_calc.add(get_add_data[0], get_add_data[1])
             # 判断 result 是浮点数，作出保留2为小数的处理
             if isinstance(result, float):
-                result = round(result, 2)
+                result = round(result, len(str(get_add_data[2]).split(".")[1]))
             # 得到结果之后，需要写断言
         except Exception as e:
             print(e)
-        assert result == get_add_datas[2]
+        print(f"{get_add_data[0]} + {get_add_data[1]} = {get_add_data[2]}")
+        assert result == get_add_data[2]
+
+    @pytest.mark.run(order=2)
+    @allure.story("测试减法")
+    def test_sub(self, get_calc, get_sub_data):
+        result = None
+        try:
+            with allure.step("计算两数相减结果"):
+                result = get_calc.sub(get_sub_data[0], get_sub_data[1])
+            if isinstance(result, float):
+                #result = round(result, 2)
+                result = round(result, len(str(get_sub_data[2]).split(".")[1]))
+        except Exception as e:
+            print(e)
+        print(f"{get_sub_data[0]} - {get_sub_data[1]} = {get_sub_data[2]}")
+        assert result == get_sub_data[2]
+
+    @pytest.mark.run(order=3)
+    @allure.story("测试乘法")
+    def test_mul(self, get_calc, get_mul_data):
+        result = None
+        try:
+            with allure.step("计算两数相乘结果"):
+                result = get_calc.mul(get_mul_data[0], get_mul_data[1])
+            if isinstance(result, float):
+                #result = round(result, 2)
+                result = round(result, len(str(get_mul_data[2]).split(".")[1]))
+        except Exception as e:
+            print(e)
+        print(f"{get_mul_data[0]} × {get_mul_data[1]} = {get_mul_data[2]}")
+        assert result == get_mul_data[2]
+
+    @pytest.mark.run(order=4)
+    @allure.story("测试除法")
+    def test_div(self, get_calc, get_div_data):
+        result = None
+        try:
+            with allure.step("计算两数相除结果"):
+                result = get_calc.div(get_div_data[0], get_div_data[1])
+            if isinstance(result, float):
+                #result = round(result, 2)
+                result = round(result, len(str(get_div_data[2]).split(".")[1]))
+        except Exception as e:
+            print(e)
+        print(f"{get_div_data[0]} ÷ {get_div_data[1]} = {get_div_data[2]}")
+        assert result == get_div_data[2]
 
 
-    # def test_add1(self):
-    #     # # 实例化计算器类
-    #     # calc = Calculator()
-    #     # 调用add方法
-    def test_add2(self):
-        result = self.calc.add(0.1, 0.2)
-        assert round(result, 2) == 0.3
-
-    # def test_add1(self):
-    #     # 实例化计算器类
-    #     # calc = Calculator()
-    #     # 调用 add 方法
-    #     result = self.calc.add(0.1, 0.1)
-    #     # 得到结果之后，需要写断言
-    #     assert result == 0.2
-    #
-    # def test_add2(self):
-    #     # # 实例化计算器类
-    #     # calc = Calculator()
-    #     # 调用add方法
-    #     # 实例化计算器类
-    #     # calc = Calculator()
-    #     # 调用 add 方法
-    #     result = self.calc.add(-1, -1)
-    #     # 得到结果之后，需要写断言
-    #     assert result == -2
