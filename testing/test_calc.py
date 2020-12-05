@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+# coding: utf-8
 """
 Pytest
 单元测试，代码测试
@@ -6,8 +6,6 @@ web,app,接口以pytest为基础
 python界比较主流的单元测试框架，unittest，pytest,nose……
 入门难度低，第三方库丰富，通用性，与allure生成的报告非常的美观
 """
-import pytest
-import yaml
 
 """
 pytest规则
@@ -81,75 +79,62 @@ ids参数
 """
 
 
-
-=======
-# -*- coding: utf-8 -*-
-# @Author  : feier
-# @File    : test_calc.py
 import pytest
 import yaml
 
->>>>>>> 08de4ac1693eec1200bebea48ddfc8ae2c855827
 from python_code.calc import Calculator
 
-with open("./datas/calc.yaml") as f:
-    datas = yaml.safe_load(f)['add']
-    add_datas = datas['datas']
-<<<<<<< HEAD
-    add_id = datas['myid']
-=======
-    print(add_datas)
-    myid = datas['myid']
-    print(myid)
+
+
+
+# @pytest.fixture(scope="class")
+# def get_calc():
+#     # 获取计算机实例
+#     calc = Calculator()
+#     return calc
 
 
 def test_a():
     print("测试用例a")
 
->>>>>>> 08de4ac1693eec1200bebea48ddfc8ae2c855827
 
 class TestCalc:
 
-    def setup_class(self):
-        print("开始计算")
-        # 实例化计算器类
-        self.calc = Calculator()
+    # def setup_class(self):
+    #     print("开始计算")
+    #     # 实例化计算器类
+    #     self.calc = Calculator()
+    #
+    # def teardown_class(self):
+    #     print("计算结束")
 
-    def teardown_class(self):
-        print("计算结束")
+    # @pytest.mark.parametrize(
+    #     "a, b, expect",
+    #     add_datas, ids=add_id
+    # )
 
-    @pytest.mark.parametrize(
-        "a, b, expect",
-<<<<<<< HEAD
-        add_datas, ids=add_id
-    )
-    def test_add(self, a, b, expect):
-        # # 实例化计算器类
-        # calc = Calculator()
-        # 调用add方法
-        result = self.calc.add(a, b)
-        # 判断result是浮点数，作出保留2位小数的处理
-=======
-        add_datas, ids=myid
-    )
-    def test_add(self, a, b, expect):
-        # 实例化计算器类
-        # calc = Calculator()
-        # 调用 add 方法
-        result = self.calc.add(a, b)
-        # 判断 result 是浮点数，作出保留2为小数的处理
->>>>>>> 08de4ac1693eec1200bebea48ddfc8ae2c855827
-        if isinstance(result, float):
-            result = round(result, 2)
-        # 得到结果之后，需要写断言
-        assert result == expect
 
-<<<<<<< HEAD
+    def test_add(self, get_calc, get_add_datas):
+        result = None
+        try:
+            # 实例化计算器类
+            # calc = Calculator()
+            # 调用 add 方法
+            # result = self.calc.add(a, b)
+            result = get_calc.add(get_add_datas[0], get_add_datas[1])
+            # 判断 result 是浮点数，作出保留2为小数的处理
+            if isinstance(result, float):
+                result = round(result, 2)
+            # 得到结果之后，需要写断言
+        except Exception as e:
+            print(e)
+        assert result == get_add_datas[2]
+
+
     # def test_add1(self):
     #     # # 实例化计算器类
     #     # calc = Calculator()
     #     # 调用add方法
-=======
     def test_add2(self):
         result = self.calc.add(0.1, 0.2)
         assert round(result, 2) == 0.3
@@ -158,21 +143,17 @@ class TestCalc:
     #     # 实例化计算器类
     #     # calc = Calculator()
     #     # 调用 add 方法
->>>>>>> 08de4ac1693eec1200bebea48ddfc8ae2c855827
     #     result = self.calc.add(0.1, 0.1)
     #     # 得到结果之后，需要写断言
     #     assert result == 0.2
     #
     # def test_add2(self):
-<<<<<<< HEAD
     #     # # 实例化计算器类
     #     # calc = Calculator()
     #     # 调用add方法
-=======
     #     # 实例化计算器类
     #     # calc = Calculator()
     #     # 调用 add 方法
->>>>>>> 08de4ac1693eec1200bebea48ddfc8ae2c855827
     #     result = self.calc.add(-1, -1)
     #     # 得到结果之后，需要写断言
     #     assert result == -2

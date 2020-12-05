@@ -1,26 +1,16 @@
-<<<<<<< HEAD
-=======
-# -*- coding: utf-8 -*-
-# @Author  : feier
-# @File    : test_demo.py
->>>>>>> 08de4ac1693eec1200bebea48ddfc8ae2c855827
 import pytest
 
-
 def test_a():
-<<<<<<< HEAD
     print("test_demo.py test_a")
 
 def test_b():
     print("test_demo.py test_b")
-=======
     print("test_demo.py  test_a")
 
 
 def test_b():
     print("test_demo.py  test_b")
 
->>>>>>> 08de4ac1693eec1200bebea48ddfc8ae2c855827
 
 def test_c():
     assert 1 == 2
@@ -29,8 +19,5 @@ def test_c():
 @pytest.mark.parametrize('a', [1, 2, 3])
 @pytest.mark.parametrize('b', [4, 5, 6])
 def test_param(a, b):
-<<<<<<< HEAD
     print(f"a = {a}, b = {b}")
-=======
     print(f"a = {a}, b = {b}")
->>>>>>> 08de4ac1693eec1200bebea48ddfc8ae2c855827
