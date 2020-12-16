@@ -39,7 +39,6 @@ class TestDemo():
         # 点击 通讯录
         self.driver.find_element_by_id("menu_contacts").click()
         # 点击 添加成员
-        # print(self.driver.find_elements_by_class_name("ww_operationBar"))
         sleep(1)
         self.driver.find_elements_by_xpath('//*[@class="ww_operationBar"]/a')[0].click()
         # 姓名 输入“测试姓名”
