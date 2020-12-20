@@ -5,6 +5,7 @@ import pytest
 import yaml
 import os
 from python_code.calc import Calculator
+
 """
 conftest.py 用法
 -conftest.py 文件名是不能改变的
@@ -15,6 +16,7 @@ conftest.py 用法
 
 # 获取yaml文件所在的绝对路径
 yaml_path = os.path.dirname(__file__) + "/datas/calc.yaml"
+
 
 @pytest.fixture(scope='session')
 def connectDB():

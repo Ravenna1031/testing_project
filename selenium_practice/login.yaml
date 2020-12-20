@@ -1,0 +1,32 @@
+user_data:
+  - name: "test01"
+    nickname: "001"
+    id: "test931"
+    gender: "male"
+    cellphone: "13190909193"
+    phone: "69742869"
+    email: "yyut@163.com"
+    address: "中国"
+    duty: "测试"
+  - name: "test02"
+    nickname:
+    id: "test961"
+    gender: "female"
+    cellphone:
+    phone:
+    email: "yyutchou@163.com"
+    address:
+    duty: "产品经理"
+  - name: "test02"
+    nickname:
+    id: "test961"
+    gender: "female"
+    cellphone:
+    phone:
+    email: "yyutchou@163.com"
+    address:
+    duty: "产品经理"
+ids:
+  - "valid1"
+  - "valid2"
+  - "not_valid1"

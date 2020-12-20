@@ -4,6 +4,10 @@ import yaml
 from time import sleep
 
 
+# cmd
+# chrome --remote-debugging-port=9222
+
+
 # 获取cookie
 def test_get_cookie():
     # 调用chromeoptions方法
