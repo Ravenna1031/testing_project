@@ -17,3 +17,8 @@
 ##### 问题2
 
 程序使用yaml文件中的字典类型传输数据，若某一项不填，返回值为None，需要单独判断，如add_po.py文件中所示，请问是否有可以优化的方案
+
+### app企业微信实战
+
+请运行/appium_practice/test_wework.py中的test_add_member方法
+

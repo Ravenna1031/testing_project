@@ -55,3 +55,12 @@ class TestDemo():
         sleep(1)
         self.driver.find_elements_by_xpath('//*[@class="member_colRight_operationBar ww_operationBar"]/a')[0].click()
         sleep(3)
+
+    def test_b(self):
+        self.driver.get("https://www.bilibili.com/")
+        self.driver.find_element_by_xpath('//*[@id="elevator"]/div[2]/div[1]/div[14]').click()
+        kichiku_rank2 = self.driver.find_element_by_xpath('//*[@id="bili_kichiku"]/div/div[2]/div[2]/a')
+        self.driver.find_element_by_xpath('//*[@class="item back-top"]').click()
+        sleep(3)
+        kichiku_rank2.click()
+        sleep(3)
