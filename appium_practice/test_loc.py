@@ -6,6 +6,7 @@ from appium.webdriver.common.touch_action import TouchAction
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
+from hamcrest import *
 
 
 class TestLoc:
@@ -87,6 +88,8 @@ class TestLoc:
         #     ).text
         # current_price = self.driver.find_element(*locator)
         print(current_price.text)
+        expect_price = 210
+        assert_that(current_price, close_to(expect_price, expect_price * 0.1))
         # assert float(current_price) > 200
         # self.driver.find_element_by_android_uiautomator('new UiSelector().resourceId("com.xueqiu.android:id/title_container").childSelector(text("股票"))').click()
         # self.driver.find_element_by_android_uiautomator('new UiSelector().className("android.widget.TextView").text("综合").fromParent(text("股票"))').click()
@@ -113,6 +116,14 @@ class TestLoc:
         self.driver.find_element_by_android_uiautomator('new UiSelector().text("关注")').click()
         # self.driver.find_element_by_android_uiautomator('new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().text("流水白菜").instance(0))').click()
         self.driver.find_element_by_android_uiautomator('new UiSelector().text("流水白菜")').click()
+
+    def test_attribute(self):
+        search_ele = self.driver.find_element_by_id("com.xueqiu.android:id/tv_search")
+        print(search_ele.get_attribute("resource-id"))
+
+    def test_hamcrest(self):
+        # assert_that(10, equal_to(9), '提示')
+        assert_that("contains string", contains_string("string"))
 
 
 if __name__ == '__main__':

@@ -20,5 +20,11 @@
 
 ### app企业微信实战
 
+#### 1.
+
 请运行/appium_practice/test_wework.py中的test_add_member方法
+
+#### 2.
+
+请运行/appium_practice/appium_PO/test_case.py
 
